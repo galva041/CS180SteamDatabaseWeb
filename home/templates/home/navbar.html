@@ -27,10 +27,10 @@
                 <a class="nav-link disabled">Disabled</a>
               </li>
             </ul>
-            <form class="d-flex" method=POST action="{% url 'search-bar' %}">
+            <form class="d-flex" method=POST action="{% url 'search-games' %}">
               {% csrf_token %}
               <input class="form-control me-2" type="search" placeholder="Search in CS Girlies" aria-label="Search" name="searched">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <button class="btn btn-outline-secondary" type="submit">Search</button>
             </form>
           </div>
         </div>
