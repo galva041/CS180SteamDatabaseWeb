@@ -1,0 +1,44 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+<center>
+    <div class="container" style="text-align: center">
+            <h1>Add Game</h1>
+            <p>Please input information below.</p>
+            <form role="form">
+                <div class="row justify-content-center">
+                    <div class="form-group col-lg-3">
+                        <input type="text" class="form-control" placeholder="Title"/>
+                    </div>
+                </div>
+                <br>
+        
+                <div class="row justify-content-center">
+                    <div class="form-group col-lg-3 "  >
+                        <input type="text" class="form-control input-normal" placeholder="Developer"/>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row justify-content-center">
+                        <div class="form-group col-lg-3 ">
+                            <input type="text" class="form-control input-normal" placeholder="Publisher" />
+                        </div>
+                </div>
+                
+                <br>
+
+                <div class="row justify-content-center">
+                        <div class="form-group col-lg-3 ">
+                            <input type="text" class="form-control input-normal" placeholder="Price" />
+                        </div>
+                </div>
+                <br>
+
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </form>
+        </div>
+</center>
+
+{% endblock %}

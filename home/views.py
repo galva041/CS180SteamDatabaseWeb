@@ -33,4 +33,8 @@ def search_games(request):
             return all_games(request)
     else:
         return all_games(request)
+
+def add_games(request):
+    return render(request, 'home/addGames.html', {})
+        
    
