@@ -5,11 +5,38 @@
 
 <center>
     {% if searched %}
-        <h1>You searched for {{ searched }}</h1>
+        <h1>Search Results for "{{ searched }}"</h1>
         <br/>
-        {% for game in games %} 
-            {{ game }} <br/>
-        {% endfor %}
+        <!--{% for game in games %} 
+            {{ game.title }} <br/>
+        {% endfor %}-->
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Developer</th>
+                <th>Publisher</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in games %}
+                <tr>
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.dev }}</td>
+                  <td>{{item.publisher}}</td>
+                  {% if item.price %}
+                    <td>${{ item.price }}</td>
+                  {% else %}
+                    <td>Free</td>
+                  {% endif %}
+
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
     {% else %} 
         <h1> You forgot to search! </h1>
     {% endif %}
