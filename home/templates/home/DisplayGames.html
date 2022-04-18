@@ -2,13 +2,13 @@
 
 {% block content %}
 
-
 <center>
-
-    <h1>All Games</h1>
-    <!--{% for items in games %} 
-        {{ items.title }}<br/>
-        {% endfor %}-->
+    {% if searched %}
+      <h1>Search Results for "{{ searched }}"</h1>
+      <br/>
+    {% else %}
+      <h1>All Games</h1>
+    {% endif %}
         <table class="table table-bordered">
             <thead>
               <tr>
