@@ -27,7 +27,7 @@
                 <a class="nav-link disabled">Disabled</a>
               </li>
             </ul>
-            <form class="d-flex" method=POST action="{% url 'search-games' %}">
+            <form class="d-flex" method=POST action="{% url 'search-games' %}" autocomplete="off">
               {% csrf_token %}
               <input class="form-control me-2" type="search" placeholder="Search in Games" aria-label="Search" name="searched">
               <button class="btn btn-outline-secondary" type="submit">Search</button>
