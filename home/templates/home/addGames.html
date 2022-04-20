@@ -3,42 +3,22 @@
 {% block content %}
 
 <center>
-    <div class="container" style="text-align: center">
-            <h1>Add Game</h1>
-            <p>Please input information below.</p>
-            <form role="form">
-                <div class="row justify-content-center">
-                    <div class="form-group col-lg-3">
-                        <input type="text" class="form-control" placeholder="Title"/>
-                    </div>
-                </div>
-                <br>
-        
-                <div class="row justify-content-center">
-                    <div class="form-group col-lg-3 "  >
-                        <input type="text" class="form-control input-normal" placeholder="Developer"/>
-                    </div>
-                </div>
-                <br>
+    <h1>Add a Game</h1>
+    <p>Please input game information below.</p>
+    {% if submitted %}
+        Your game was submitted!
 
-                <div class="row justify-content-center">
-                        <div class="form-group col-lg-3 ">
-                            <input type="text" class="form-control input-normal" placeholder="Publisher" />
-                        </div>
-                </div>
-                
-                <br>
+    {% else %}
 
-                <div class="row justify-content-center">
-                        <div class="form-group col-lg-3 ">
-                            <input type="text" class="form-control input-normal" placeholder="Price" />
-                        </div>
-                </div>
-                <br>
+        <form action="" method=POST>
+            {% csrf_token %}
 
-                <button type="submit" class="btn btn-outline-primary">Submit</button>
-            </form>
-        </div>
+            {{ form.as_p }}
+
+            <input type="submit" class="btn btn-outline-primary">
+        </form> 
+
+    {% endif %}
 </center>
 
 {% endblock %}
