@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 from Games.models import Games
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .forms import GameForm
 
 def home(request):
     return render(request, 'home/home.html', {'name': 'CS Girlie'})
@@ -35,6 +37,18 @@ def search_games(request):
         return all_games(request)
 
 def add_games(request):
-    return render(request, 'home/addGames.html', {})
+    submitted = False
+    if request.method == "POST":
+        form = GameForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/addGames?submitted=True')
+
+    else:
+        form = GameForm
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'home/addGames.html', {'form': form, 'submitted': submitted})
         
    
