@@ -1,9 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
 from Games.models import Games
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+def delete_game(request, game_id):
+    game = Games.objects.get(pk=game_id)
+    game.delete()
+    return redirect('all-games')
 
 def home(request):
     return render(request, 'home/home.html', {'name': 'CS Girlie'})
