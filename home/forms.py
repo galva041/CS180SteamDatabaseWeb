@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Games
+from Games.models import Games
 
 class GameForm(ModelForm):
     class Meta:
