@@ -19,10 +19,10 @@ def home(request):
 
 def all_games(request):
     searched = ''
-    #games_list = Game.objects.all()
+    games_list = Games.objects.all()
     page = request.GET.get('page', 1)
                 
-    paginator = Paginator(game_list, 25)
+    paginator = Paginator(games_list, 25)
     try:
         games = paginator.page(page)
     except PageNotAnInteger:
