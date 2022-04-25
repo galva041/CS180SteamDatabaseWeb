@@ -1,9 +1,11 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 from Games.models import Games
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .forms import GameForm
 
 def delete_game(request, game_id):
     game = Games.objects.get(pk=game_id)
@@ -38,4 +40,20 @@ def search_games(request):
             return all_games(request)
     else:
         return all_games(request)
+
+def add_games(request):
+    submitted = False
+    if request.method == "POST":
+        form = GameForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/addGames?submitted=True')
+
+    else:
+        form = GameForm
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'home/addGames.html', {'form': form, 'submitted': submitted})
+        
    

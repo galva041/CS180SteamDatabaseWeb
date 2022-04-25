@@ -7,5 +7,6 @@ urlpatterns = [
     #path('search', views.search_bar, name="search-bar"),
     path('searchGames/', views.search_games, name="search-games"),
     path('allGames/', views.all_games, name="all-games" ),
+    path('addGames/', views.add_games, name="add-games"),
     path('delete_game/<game_id>', views.delete_game, name='delete_game')
 ]
