@@ -58,4 +58,12 @@ def add_games(request):
 
     return render(request, 'home/addGames.html', {'form': form, 'submitted': submitted})
         
-   
+def update_game(request, game_id):
+    game = Games.objects.get(pk=game_id)
+    form = GameForm(request.POST or None, instance=game)
+    if form.is_valid():
+        form.owners=1
+        form.save()
+        return redirect('all-games')
+        
+    return render(request, 'home/update_game.html', {'form': form, 'game': game})   
