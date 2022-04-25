@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
-#from Games.models import Games
-from .game import Game
-from .read_csv import game_list
+from Games.models import Games
+#from .game import Game
+#from .read_csv import game_list
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import GameForm
