@@ -17,7 +17,7 @@ class Games (models.Model):
     neg_rate = models.BigIntegerField(("negative_ratings"), null=True)
     avg_playtime = models.BigIntegerField(("average_playtime"), null=True)
     median_playtime = models.BigIntegerField(("median_playtime"),null=True)
-    owners = models.BigIntegerField(("number of owners"), null=True)
+    owners = models.BigIntegerField(("number of owners"), max_length=100, null=True)
     price = models.FloatField(("price"))
 
     def __str__(self):
