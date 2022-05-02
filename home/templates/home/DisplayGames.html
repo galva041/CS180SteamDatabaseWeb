@@ -44,6 +44,7 @@
                     <td>Free</td>
                   {% endif %}
                   <td> <!-- Button trigger modal -->
+                    <a href="{% url 'update-game' item.id %}" class="btn btn-secondary">Update</a>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                       Delete
                     </button>
