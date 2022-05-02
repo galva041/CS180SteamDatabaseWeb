@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
 from Games.models import Games
+#from .game import Game
+#from .read_csv import game_list
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import GameForm
@@ -64,4 +66,12 @@ def update_game(request, game_id):
         form.save()
         return redirect('all-games')
         
-    return render(request, 'home/update_game.html', {'form': form, 'game': game})
+def update_game(request, game_id):
+    game = Games.objects.get(pk=game_id)
+    form = GameForm(request.POST or None, instance=game)
+    if form.is_valid():
+        form.owners=1
+        form.save()
+        return redirect('all-games')
+        
+    return render(request, 'home/update_game.html', {'form': form, 'game': game})   
