@@ -3,15 +3,18 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
 from Games.models import Games
-#from .game import Game
-#from .read_csv import game_list
+from .game import Game
+from .read_csv import game_list
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import GameForm
 
 def delete_game(request, game_id):
-    game = Games.objects.get(pk=game_id)
-    game.delete()
+    for i, o in enumerate(game_list):
+        if o.gameid == game_id:
+            del game_list[i]
+            break
+    #game = Games.objects.get(pk=game_id)
     return redirect('all-games')
 
 def home(request):
@@ -19,10 +22,10 @@ def home(request):
 
 def all_games(request):
     searched = ''
-    games_list = Games.objects.all()
+    #games_list = Games.objects.all()
     page = request.GET.get('page', 1)
                 
-    paginator = Paginator(games_list, 25)
+    paginator = Paginator(game_list, 25)
     try:
         games = paginator.page(page)
     except PageNotAnInteger:

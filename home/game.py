@@ -1,4 +1,5 @@
 class Game:
+    gameid = ""
     title = ""
     rel_date = ""
     english = ""
@@ -17,8 +18,9 @@ class Game:
     owners = ""
     price = 0
 
-    def __init__(self, title, rel_date, english, dev, publisher, platform, rec_age, categories, genre, steamspy_tags, achievements, pos_rate, neg_rate, 
+    def __init__(self, gameid, title, rel_date, english, dev, publisher, platform, rec_age, categories, genre, steamspy_tags, achievements, pos_rate, neg_rate, 
     avg_playtime, median_playtime, owners, price):
+        self.gameid = gameid
         self.title = title
         self.rel_date = rel_date
         self.english = english
