@@ -1,5 +1,5 @@
-class Game:
-    gameid = ""
+class Game():
+    gameid = 0
     title = ""
     rel_date = ""
     english = ""
@@ -38,6 +38,12 @@ class Game:
         self.median_playtime = median_playtime
         self.owners = owners
         self.price = price
+
+    def set_gameid(self, id):
+        self.gameid = id
+
+    def get_title(self):
+        return self.title
 
     def get_dev(self):
         return self.dev
