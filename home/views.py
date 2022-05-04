@@ -87,7 +87,7 @@ def update_game(request, game_id):
                 o.price = form.cleaned_data.get('price')
                 break
         return redirect('all-games')        
-    return render(request, 'home/update_game.html', {'form': form, 'game': game})   
+    return render(request, 'home/update_game.html', {'form': form})
 
 def most_playtime(request) :
 
