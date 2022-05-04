@@ -38,7 +38,7 @@
                   <td>{{ item.title }}</td>
                   <td>{{ item.dev }}</td>
                   <td>{{item.publisher}}</td>
-                  {% if item.price %}
+                  {% if item.price != "0.0" %}
                     <td>${{ item.price }}</td>
                   {% else %}
                     <td>Free</td>
