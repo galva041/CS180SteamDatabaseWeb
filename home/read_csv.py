@@ -3,7 +3,7 @@ from .game import Game
 
 game_list = []
 
-with open('steam.csv', 'r', encoding='utf-8') as f:
+with open('steam.csv', 'r' , encoding = 'utf-8') as f:
     reader = csv.reader(f)
     next(reader)
     for row in reader:

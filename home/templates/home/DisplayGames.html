@@ -38,14 +38,14 @@
                   <td>{{ item.title }}</td>
                   <td>{{ item.dev }}</td>
                   <td>{{item.publisher}}</td>
-                  {% if item.price %}
+                  {% if item.price != "0.0" %}
                     <td>${{ item.price }}</td>
                   {% else %}
                     <td>Free</td>
                   {% endif %}
                   <td> <!-- Button trigger modal -->
                     <a href="{% url 'update-game' item.gameid %}" class="btn btn-secondary">Update</a>
-                           
+
                           </div>
                             <a href="{% url 'delete_game' item.gameid %}" class="btn btn-danger">Delete</a>
                             <!--<div class="alert alert-warning" id="deletedMessage" role="alert">
