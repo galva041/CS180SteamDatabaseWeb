@@ -6,6 +6,8 @@ from Games.models import Games
 from .game import Game
 from .read_csv import game_list
 
+from .forms import GameForm
+
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import GameForm
 
@@ -38,9 +40,15 @@ def all_games(request):
 def search_games(request):
     if request.method == "POST":
         searched = request.POST['searched']
+        gamesToDisplay = []
         if searched:
-            games = Games.objects.filter(title__contains=searched) or Games.objects.filter(dev__contains=searched) or Games.objects.filter(publisher__contains=searched)
-            return render(request, 'home/DisplayGames.html', {'searched':searched, 'games':games})
+            #games = Games.objects.filter(title__contains=searched) or Games.objects.filter(dev__contains=searched) or Games.objects.filter(publisher__contains=searched)
+            for i, o in enumerate(game_list):
+                if searched.lower() in o.title.lower() or searched.lower() in o.dev.lower() or searched.lower() in o.publisher.lower():
+                    gamesToDisplay.append(game_list[i])
+            #return render(request, 'home/DisplayGames.html', {'searched':searched, 'games':games})
+            return render(request, 'home/DisplayGames.html', {'searched':searched, 'games':gamesToDisplay})
+
         else:
             return all_games(request)
     else:
@@ -51,7 +59,12 @@ def add_games(request):
     if request.method == "POST":
         form = GameForm(request.POST)
         if form.is_valid():
-            form.save()
+            #form.save()
+            newGame = Game(0, form.cleaned_data.get("title"), 0, 1, form.cleaned_data.get("dev"), form.cleaned_data.get("publisher"), '', '', '', '', '', 0, 0, 0, 0, 0, '', form.cleaned_data.get("price"))
+            newID = int(game_list[-1].gameid)
+            newID = newID + 1
+            newGame.set_gameid(newID)
+            game_list.append(newGame)
             return HttpResponseRedirect('/addGames?submitted=True')
 
     else:
@@ -70,11 +83,20 @@ def update_game(request, game_id):
         return redirect('all-games')
         
 def update_game(request, game_id):
-    game = Games.objects.get(pk=game_id)
-    form = GameForm(request.POST or None, instance=game)
+    #game = Games.objects.get(pk=game_id)
+    form = GameForm(request.POST or None)
     if form.is_valid():
-        form.owners=1
-        form.save()
+        #form.owners=1
+        #form.save()
+        for i, o in enumerate(game_list):
+            if o.gameid == game_id:
+                o.title = form.cleaned_data.get('title')
+                o.dev = form.cleaned_data.get('dev')
+                o.publisher = form.cleaned_data.get('publisher')
+                o.genre = form.cleaned_data.get('genre')
+                o.price = form.cleaned_data.get('price')
+                break
+
         return redirect('all-games')
         
-    return render(request, 'home/update_game.html', {'form': form, 'game': game})   
+    return render(request, 'home/update_game.html', {'form': form})   
