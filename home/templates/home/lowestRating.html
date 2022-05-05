@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+<!-- {% autoescape off %}
+{{ plot_div }}
+{% endautoescape %} -->
+
+<center><h1>Top 10 Games with the Lowest Rating</h1></center>
+<table class ="table table-bordered">
+    <thead>
+        <tr>
+            <th>Game Title</th>
+            <th>Rating</th>
+        </tr>
+        </thead>
+    <tbody>
+    {% for item in badRatings %}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.neg_rate }}</td>      
+            </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+{% endblock %}
