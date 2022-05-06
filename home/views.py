@@ -137,7 +137,7 @@ def lowest_rating(request):
         badRatings.append(BadRatings(o.title, o.neg_rate))
 
 
-    sorted_badRating = sorted(badRatings, key = operator.attrgetter('neg_rate'))
+    sorted_badRating = sorted(badRatings, key = operator.attrgetter('neg_rate'), reverse=True)
     sorted_badRating = sorted_badRating[:10]
 
     return render(request, 'home/lowestRating.html', context ={'badRatings': sorted_badRating})
