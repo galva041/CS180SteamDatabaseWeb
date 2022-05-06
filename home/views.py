@@ -134,7 +134,7 @@ def lowest_rating(request):
     badRatings = []
 
     for i, o in enumerate(game_list):
-        badRatings.append(BadRatings(o.title, o.pos_rate))
+        badRatings.append(BadRatings(o.title, o.neg_rate))
 
 
     sorted_badRating = sorted(badRatings, key = operator.attrgetter('neg_rate'))
