@@ -8,6 +8,8 @@ from Games.models import Games
 from .game import Game
 from .playtime import Playtime
 from .read_csv import game_list
+from .ratings import GoodRatings
+from .ratings import BadRatings
 
 
 #visualization
@@ -114,3 +116,28 @@ def most_playtime(request) :
     
 
     return render(request, 'home/analytics.html', context={'playtimes': sorted_playtime})
+
+def highest_rating(request):
+    goodRatings = []
+
+    for i, o in enumerate(game_list):
+        goodRatings.append(GoodRatings(o.title, o.pos_rate))
+
+
+    sorted_goodRating = sorted(goodRatings, key = operator.attrgetter('pos_rate'), reverse=True)
+    sorted_goodRating = sorted_goodRating[:10]
+
+    return render(request, 'home/highestRating.html', context ={'goodRatings': sorted_goodRating})
+
+
+def lowest_rating(request):
+    badRatings = []
+
+    for i, o in enumerate(game_list):
+        badRatings.append(BadRatings(o.title, o.neg_rate))
+
+
+    sorted_badRating = sorted(badRatings, key = operator.attrgetter('neg_rate'), reverse=True)
+    sorted_badRating = sorted_badRating[:10]
+
+    return render(request, 'home/lowestRating.html', context ={'badRatings': sorted_badRating})
