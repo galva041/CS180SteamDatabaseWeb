@@ -10,4 +10,7 @@ urlpatterns = [
     path('addGames/', views.add_games, name="add-games"),
     path('delete_game/<game_id>', views.delete_game, name='delete_game'),
     path('update_game/<game_id>', views.update_game, name='update-game'),
+    path('most_playtime/', views.most_playtime, name='most-playtime'),
+    path('highest_rating/', views.highest_rating, name='highest-rating'),
+    path('lowest_rating/', views.lowest_rating, name='lowest-rating'),
 ]
