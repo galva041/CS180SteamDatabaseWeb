@@ -2,11 +2,12 @@
 
 {% block content %}
 
-<!-- {% autoescape off %}
-{{ plot_div }}
-{% endautoescape %} -->
-
 <center><h1>Top 10 Games with the Highest Playtime</h1></center>
+{% autoescape off %}
+{{ plot_div }}
+{% endautoescape %}
+
+<!-- <center><h1>Top 10 Games with the Highest Playtime</h1></center>
 <table class ="table table-bordered">
     <thead>
         <tr>
@@ -22,6 +23,6 @@
             </tr>
     {%endfor%}
     </tbody>
-</table>
+</table> -->
 
 {% endblock %}
