@@ -6,10 +6,11 @@ import operator
 
 from Games.models import Games
 from .game import Game
-from .playtime import Playtime
+from .classes import Playtime
 from .read_csv import game_list
-from .ratings import GoodRatings
-from .ratings import BadRatings
+from .read_csv import genre_list
+from .classes import GoodRatings
+from .classes import BadRatings
 
 from operator import itemgetter
 
@@ -146,3 +147,10 @@ def lowest_rating(request):
     sorted_badRating = sorted_badRating[:10]
 
     return render(request, 'home/lowestRating.html', context ={'badRatings': sorted_badRating})
+
+def popular_genre(request):
+    # size = len(genre_list)
+    # firstGenre = genre_list[0]
+    # bruh = firstGenre.split(';')
+    sorted_genreList = sorted(genre_list, key=lambda Genre: int(Genre.count), reverse=True)
+    return render(request, 'home/popularGenre.html', context ={ 'sorted_genreList' : sorted_genreList })

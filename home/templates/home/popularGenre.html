@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<center>
+    <h1>Most Popular Genres</h1> 
+</center>
+    <table class ="table table-bordered">
+        <thead>
+            <tr>
+                <th>Genre Name</th>
+                <th>Number of Times Used</th>
+            </tr>
+            </thead>
+        <tbody>
+        {% for item in sorted_genreList %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.count }}</td>      
+                </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+{% endblock %}
