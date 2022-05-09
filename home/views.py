@@ -119,10 +119,12 @@ def most_playtime(request) :
     sorted_playtime = sorted(playtimes, key=lambda Playtime: int(Playtime.avg_playtime), reverse=True)
 
     sorted_playtime = sorted_playtime[:10]
-    # for title, avg_playtime in enumerate(sorted_playtime):
-    #     plot_div = plot([Bar(x=title, y=avg_playtime)], output_type= 'div')
+    titles = [o.title for o in sorted_playtime]
+    play = [int(o.avg_playtime) for o in sorted_playtime]
+    
+    plot_div = plot([Bar(x=titles, y=play)], output_type= 'div')
 
-    return render(request, 'home/analytics.html', context={'playtimes': sorted_playtime})
+    return render(request, 'home/analytics.html', context={'plot_div': plot_div})
 
 def highest_rating(request):
     goodRatings = []
