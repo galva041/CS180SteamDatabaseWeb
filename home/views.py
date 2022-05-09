@@ -11,6 +11,7 @@ from .read_csv import game_list
 from .ratings import GoodRatings
 from .ratings import BadRatings
 
+from operator import itemgetter
 
 #visualization
 from plotly.offline import plot
@@ -104,16 +105,14 @@ def most_playtime(request) :
     #playtimes.sort(reverse=True)
     #titles.sort(reverse=True)
     
-    
-
     #playtime = [Playtime(titles, playtimes)]
     #playtime.sort(key=lambda x: x.count, reverse=True)
-    sorted_playtime = sorted(playtimes, key=operator.attrgetter('avg_playtime'), reverse=True)
+    #sorted_playtime = sorted(playtimes, key=operator.attrgetter('avg_playtime'), reverse=True)
+    sorted_playtime = sorted(playtimes, key=lambda Playtime: int(Playtime.avg_playtime), reverse=True)
+
     sorted_playtime = sorted_playtime[:10]
     # for title, avg_playtime in enumerate(sorted_playtime):
     #     plot_div = plot([Bar(x=title, y=avg_playtime)], output_type= 'div')
-
-    
 
     return render(request, 'home/analytics.html', context={'playtimes': sorted_playtime})
 
@@ -123,8 +122,7 @@ def highest_rating(request):
     for i, o in enumerate(game_list):
         goodRatings.append(GoodRatings(o.title, o.pos_rate))
 
-
-    sorted_goodRating = sorted(goodRatings, key = operator.attrgetter('pos_rate'), reverse=True)
+    sorted_goodRating = sorted(goodRatings, key=lambda GoodRatings: int(GoodRatings.pos_rate), reverse=True)
     sorted_goodRating = sorted_goodRating[:10]
 
     return render(request, 'home/highestRating.html', context ={'goodRatings': sorted_goodRating})
@@ -136,8 +134,7 @@ def lowest_rating(request):
     for i, o in enumerate(game_list):
         badRatings.append(BadRatings(o.title, o.neg_rate))
 
-
-    sorted_badRating = sorted(badRatings, key = operator.attrgetter('neg_rate'), reverse=True)
+    sorted_badRating = sorted(badRatings, key=lambda BadRatings: int(BadRatings.neg_rate), reverse=True)
     sorted_badRating = sorted_badRating[:10]
 
     return render(request, 'home/lowestRating.html', context ={'badRatings': sorted_badRating})
