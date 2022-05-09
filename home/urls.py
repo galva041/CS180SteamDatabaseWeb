@@ -13,4 +13,5 @@ urlpatterns = [
     path('most_playtime/', views.most_playtime, name='most-playtime'),
     path('highest_rating/', views.highest_rating, name='highest-rating'),
     path('lowest_rating/', views.lowest_rating, name='lowest-rating'),
+    path('popular_genre', views.popular_genre, name="popular-genre"),
 ]

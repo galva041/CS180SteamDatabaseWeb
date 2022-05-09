@@ -1,3 +1,11 @@
+class Playtime:
+    title = ""
+    avg_playtime = 0
+
+    def __init__(self, title, avg_playtime):
+        self.title = title
+        self.avg_playtime = avg_playtime
+
 class GoodRatings:
     title = ""
     pos_rate = 0
@@ -14,3 +22,10 @@ class BadRatings:
         self.title = title
         self.neg_rate = neg_rate
         
+class Genre:
+    name=""
+    count=0
+
+    def __init__(self, name, count):
+        self.name = name
+        self.count = count
