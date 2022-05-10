@@ -17,6 +17,8 @@ from operator import itemgetter
 #visualization
 from plotly.offline import plot
 from plotly.graph_objs import Bar
+from plotly.graph_objs import Pie
+import plotly.graph_objects as go
 
 from .forms import GameForm
 
@@ -125,7 +127,7 @@ def most_playtime(request) :
     
     plot_div = plot([Bar(x=titles, y=play)], output_type= 'div')
 
-    return render(request, 'home/analytics.html', context={'plot_div': plot_div})
+    return render(request, 'home/top_playtime.html', context={'plot_div': plot_div})
 
 def highest_rating(request):
     goodRatings = []
@@ -155,4 +157,18 @@ def popular_genre(request):
     # firstGenre = genre_list[0]
     # bruh = firstGenre.split(';')
     sorted_genreList = sorted(genre_list, key=lambda Genre: int(Genre.count), reverse=True)
-    return render(request, 'home/popularGenre.html', context ={ 'sorted_genreList' : sorted_genreList })
+    sorted_genreList = sorted_genreList[:15]
+    name = [o.name for o in sorted_genreList]
+    count = [int(o.count) for o in sorted_genreList]
+    
+    fig = go.Figure(data=[go.Pie(labels=name, values=count)])
+    fig.update_layout(
+        width= 800, height= 800,
+    )
+    #fig.Title("Top Game Genres")
+    plot_div = plot(fig, output_type='div')
+    
+    #plot([Pie(labels = name, values = count)], width = 2 ,output_type= 'div')
+    
+
+    return render(request, 'home/popularGenre.html', context ={ 'genre_bar' :  plot_div})

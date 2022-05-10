@@ -1,7 +1,12 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-<center>
+
+<center><h1>Top 15 Game Genres</h1></center>
+{% autoescape off %}
+{{ genre_bar }}
+{% endautoescape %}
+<!-- <center>
     <h1>Most Popular Genres</h1> 
 </center>
     <table class ="table table-bordered">
@@ -19,5 +24,5 @@
                 </tr>
         {%endfor%}
         </tbody>
-    </table>
+    </table> -->
 {% endblock %}
