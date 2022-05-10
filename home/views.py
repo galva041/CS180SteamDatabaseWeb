@@ -6,11 +6,8 @@ import operator
 
 from Games.models import Games
 from .game import Game
-from .classes import Playtime
-from .read_csv import game_list
-from .read_csv import genre_list
-from .classes import GoodRatings
-from .classes import BadRatings
+from .classes import *
+from .read_csv import *
 
 from operator import itemgetter
 
@@ -24,6 +21,14 @@ from .forms import GameForm
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import GameForm
+
+def dev_pie(request):
+    for i, d in enumerate(dev_names):
+        d.percentage = (d.total_games / len(game_list)) * 100
+
+    dev_names_s = sorted(dev_names, key=lambda Developer: int(Developer.total_games), reverse=True)
+
+    return render(request, 'home/displayDevs.html', context={'percentages': dev_names_s[:15]})
 
 def delete_game(request, game_id):
     for i, o in enumerate(game_list):
