@@ -11,20 +11,23 @@
     <div class="container">
         <section id="slide-1" class="scrollsnap-section">
             <h1 class="animate__animated animate__fadeInDown" id="welcome">Welcome, Steamers! </h1>
+            
+            <form class="d-flex" id="home-search" method=POST action="{% url 'search-games' %}" autocomplete="off">
+                {% csrf_token %}
+                <input class="form-control me-2" id="search-bar" type="search" placeholder="Search in Games" aria-label="Search" name="searched">
+                <button class="btn btn-outline-secondary" id="search-bar" type="submit">Search</button>
+            </form>
+
+            <a class="btn btn-light" href="{% url 'all-games' %}" role="button"><span>View All Games</span> </a>
+
         </section>
         <section id="slide-2" class="scrollsnap-section">
             <h1 id= "select">Customize Your Games.</h1>
+            <a class="btn btn-light" href="{% url 'add-games' %}" role="button"><span>Add a Game</span> </a>
+            <a class="btn btn-light" href="{% url 'all-games' %}" role="button"><span>View Analytics</span> </a>
         </section>
-        <div>
-            <a href="#" class="cta">
-                <span>View all Games</span>
-                <svg width="13px" height="10px" viewBox="0 0 13 10">
-                    <path d="M1,5 L11,5"></path>
-                    <polyline points="8 1 12 5 8 9"></polyline>
-                </svg>
-            </a>
-        </div>
     </div>
+
     <!-- <div class = "container">
         <div class = "col-md-8">
             <img src="{% static "home/media/steamlogo.jpeg" %}" class="img-fluid" alt="steam logo" max-width=300 max-height=300>
