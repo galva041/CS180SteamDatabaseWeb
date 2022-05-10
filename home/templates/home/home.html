@@ -5,8 +5,34 @@
 
 <center>
 
+{% load static %}
 <!--<h1>Hello {{ name }}!</h1>-->
-<h1>Welcome Steamers</h1>
+<body id="homepage">
+    <div class="container">
+        <section id="slide-1" class="scrollsnap-section">
+            <h1 class="animate__animated animate__fadeInDown" id="welcome">Welcome, Steamers! </h1>
+        </section>
+        <section id="slide-2" class="scrollsnap-section">
+            <h1 id= "select">Customize Your Games.</h1>
+        </section>
+        <div>
+            <a href="#" class="cta">
+                <span>View all Games</span>
+                <svg width="13px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <!-- <div class = "container">
+        <div class = "col-md-8">
+            <img src="{% static "home/media/steamlogo.jpeg" %}" class="img-fluid" alt="steam logo" max-width=300 max-height=300>
+        </div>
+    </div> -->
+</body>
+
+
 
 </center>
 
