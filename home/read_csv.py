@@ -15,7 +15,7 @@ with open('steam.csv', 'r' , encoding = 'utf-8') as f:
 
         # if (row[8] not in genre_list):
         #     genre_list.append(row[8])
-        temp_genres=row[8]
+        temp_genres=row[9]
         temp_genre_list = temp_genres.split(';')
         flag=0                                      
         for i, o in enumerate(temp_genre_list):     # goes through list of genres in current game
