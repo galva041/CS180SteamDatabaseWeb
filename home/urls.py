@@ -1,5 +1,6 @@
 from django.urls import path 
 from . import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 #URLConf (url configuration)
 urlpatterns = [
@@ -16,3 +17,4 @@ urlpatterns = [
     path('popular_genre', views.popular_genre, name="popular-genre"),
     path('developer_breakdown/', views.dev_pie, name='dev-breakdown'),
 ]
+urlpatterns += staticfiles_urlpatterns()
