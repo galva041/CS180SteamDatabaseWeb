@@ -29,3 +29,12 @@ class Genre:
     def __init__(self, name, count):
         self.name = name
         self.count = count
+
+class Developer:
+    name = ""
+    total_games = 0
+    percentage = 0
+
+    def __init__(self, name, total_games):
+        self.name = name
+        self.total_games = total_games

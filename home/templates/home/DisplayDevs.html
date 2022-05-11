@@ -1,0 +1,30 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+<center><h1>
+    Developer Breakdown
+</h1>
+<h5> Top 15 Developers 
+</h5> </center>
+<br>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Developer</th>
+            <th>Total Games</th>
+            <th>Percentage</th>
+        </tr>
+        </thead>
+    <tbody>
+    {% for item in percentages %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.total_games }}</td> 
+            <td>{{ item.percentage }} %</td>      
+            </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+{% endblock %}

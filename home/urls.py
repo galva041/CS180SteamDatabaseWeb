@@ -15,5 +15,6 @@ urlpatterns = [
     path('highest_rating/', views.highest_rating, name='highest-rating'),
     path('lowest_rating/', views.lowest_rating, name='lowest-rating'),
     path('popular_genre', views.popular_genre, name="popular-genre"),
+    path('developer_breakdown/', views.dev_pie, name='dev-breakdown'),
 ]
 urlpatterns += staticfiles_urlpatterns()
