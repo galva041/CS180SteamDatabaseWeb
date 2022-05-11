@@ -40,6 +40,11 @@ to {
     padding: 70px;
 }
 
+#homepage-drop {
+  padding:0px;
+  color: black;
+}
+
 .container {
     overflow: none;
     max-height: 100vh;
@@ -93,9 +98,22 @@ to {
     width: 500px;
     height: 70px;
     padding-bottom: 25px;
-    
 }
 
 #search-bar {
     border-radius: 15px;    
+}
+
+#dropdown-choices {
+  border-radius: 10px;   
+  overflow: hidden;
+  transition: all .5s ease; 
+}
+
+#dropdown-choices.folded {
+  max-height: 0;
+}
+
+#dropdown-choices.unfolded {
+  max-height: 100px;
 }

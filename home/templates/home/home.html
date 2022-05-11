@@ -24,9 +24,22 @@
         <section id="slide-2" class="scrollsnap-section">
             <h1 id= "select">Customize Your Games.</h1>
             <a class="btn btn-light" href="{% url 'add-games' %}" role="button"><span>Add a Game</span> </a>
-            <a class="btn btn-light" href="{% url 'all-games' %}" role="button"><span>View Analytics</span> </a>
+            <li class="btn btn-light nav-item dropdown" > <span>
+                <a class="nav-link dropdown-toggle" href="#" id="homepage-drop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Analytics
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdown-choices">
+                    <li><a class="btn btn-light dropdown-item" href="{% url 'most-playtime' %}">Highest Playtime</a></li>
+                    <li><a class="btn btn-light dropdown-item" href="{% url 'highest-rating' %}">Highest Rated</a></li>
+                    <li><a class="btn btn-light dropdown-item" href="{% url 'lowest-rating' %}">Lowest Rated</a></li>
+                    <li><a class="btn btn-light dropdown-item" href="{% url 'popular-genre' %}">Popular Genres</a></li>
+                    <li><a class="btn btn-light dropdown-item" href="{% url 'dev-breakdown' %}">Developer Breakdown</a></li>
+                </ul> </span>
+            </li>
         </section>
     </div>
+
+    <!-- <button class="btn btn-light dropdown-toggle" data-toggle="dropdown" role="button"><span>View Analytics</span> </button> -->
 
     <!-- <div class = "container">
         <div class = "col-md-8">

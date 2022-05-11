@@ -25,9 +25,6 @@
                   <li><a class="dropdown-item" href="{% url 'dev-breakdown' %}">Developer Breakdown</a></li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
             </ul>
             <form class="d-flex" method=POST action="{% url 'search-games' %}" autocomplete="off">
               {% csrf_token %}
