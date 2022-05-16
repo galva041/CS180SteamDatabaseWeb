@@ -182,6 +182,19 @@ def lowest_rating(request):
 
     return render(request, 'home/lowestRating.html', context ={'badRatings': sorted_badRating})
 
+def average_rating(request):
+    avg_rating = []
+
+    for i, o in enumerate(game_list):
+        avg_rating.append(AverageRating(o.title, o.pos_rate, o.neg_rate))
+    
+
+    test = sorted(avg_rating, key=lambda AverageRating: int(AverageRating.avg), reverse=True)
+
+    sorted_avg = test[:100]
+
+    return render(request, 'home/avgRating.html', context ={'avg_rating': sorted_avg})
+
 def popular_genre(request):
     # size = len(genre_list)
     # firstGenre = genre_list[0]

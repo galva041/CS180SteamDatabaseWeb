@@ -40,6 +40,10 @@
     scroll-snap-points-y: repeat(100vh); /* for older browsers */
     scroll-snap-type: y mandatory;
   }
+
+.container::-webkit-scrollbar {
+  display: none;
+}
   .scrollsnap-section {
     height: 100vh;
     scroll-snap-align: start;

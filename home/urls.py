@@ -18,11 +18,12 @@ urlpatterns = [
     path('popular_genre', views.popular_genre, name="popular-genre"),
     path('developer_breakdown/', views.dev_pie, name='dev-breakdown'),
     path('platform_breakdown/', views.platform_pie, name = 'platform-pie'),
-   # path('analytics/', views.most_playtime, name='analytics'),
+    path('average_rating/', views.average_rating, name = 'average-rating')
+    # path('analytics/', views.most_playtime, name='analytics'),
     # path('analytics/', views.highest_rating, name='analytics'),
     # path('analytics/', views.lowest_rating, name='analytics'),
     # path('analytics/', views.popular_genre, name='analytics'),
-   # path('analytics/', views.platform_pie, name='analytics')
-    #path('analytics/', views.dev_pie, name='analytics'),
+    # path('analytics/', views.platform_pie, name='analytics')
+    # path('analytics/', views.dev_pie, name='analytics'),
 ]
 urlpatterns += staticfiles_urlpatterns()
