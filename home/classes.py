@@ -38,3 +38,12 @@ class Developer:
     def __init__(self, name, total_games):
         self.name = name
         self.total_games = total_games
+
+class Platform:
+    type = ""
+    total = 0 
+    percentage = 0
+
+    def __init__(self, name, total_games):
+        self.name = name
+        self.total = total_games

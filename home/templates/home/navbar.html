@@ -23,7 +23,16 @@
                   <li><a class="dropdown-item" href="{% url 'lowest-rating' %}">Lowest Rated</a></li>
                   <li><a class="dropdown-item" href="{% url 'popular-genre' %}">Popular Genres</a></li>
                   <li><a class="dropdown-item" href="{% url 'dev-breakdown' %}">Developer Breakdown</a></li>
-                </ul>
+                  <li><a class="dropdown-item" href="{% url 'platform-pie' %}">Platform Breakdown</a></li>
+                {% comment %} <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'analytics' %}#most-playtime'">Highest Playtime</a></li>
+                  <li><a class="dropdown-item" href="{% url 'analytics' %}#highest-rating">Highest Rated</a></li>
+                  <!--<li><hr class="dropdown-divider"></li>-->
+                  <li><a class="dropdown-item" href="{% url 'analytics' %}#lowest-rating">Lowest Rated</a></li>
+                  <li><a class="dropdown-item" href="{% url 'analytics' %}#popular-genre">Popular Genres</a></li>
+                  <li><a class="dropdown-item" href="{% url 'analytics' %}#dev-breakdown">Developer Breakdown</a></li>
+                </ul> {% endcomment %}
+              </ul>
               </li>
             </ul>
             <form class="d-flex" method=POST action="{% url 'search-games' %}" autocomplete="off">

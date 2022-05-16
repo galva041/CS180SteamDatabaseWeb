@@ -1,3 +1,4 @@
+import platform
 from django.urls import path 
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -16,5 +17,12 @@ urlpatterns = [
     path('lowest_rating/', views.lowest_rating, name='lowest-rating'),
     path('popular_genre', views.popular_genre, name="popular-genre"),
     path('developer_breakdown/', views.dev_pie, name='dev-breakdown'),
+    path('platform_breakdown/', views.platform_pie, name = 'platform-pie'),
+   # path('analytics/', views.most_playtime, name='analytics'),
+    # path('analytics/', views.highest_rating, name='analytics'),
+    # path('analytics/', views.lowest_rating, name='analytics'),
+    # path('analytics/', views.popular_genre, name='analytics'),
+   # path('analytics/', views.platform_pie, name='analytics')
+    #path('analytics/', views.dev_pie, name='analytics'),
 ]
 urlpatterns += staticfiles_urlpatterns()

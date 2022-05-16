@@ -14,6 +14,13 @@
     background-repeat: no-repeat;
 }
 
+#analytics {
+  overflow-y: hidden;
+  background-image: url("mtn2.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
 #select {
     text-align: center;
     font-size: 5vw;

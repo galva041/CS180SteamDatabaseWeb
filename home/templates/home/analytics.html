@@ -1,0 +1,139 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<center>
+    <id = "analytics-plat">
+    <h1>
+        Platform Breakdown
+    </h1>
+    <br>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Platform</th>
+                <th>Total Games</th>
+                <th>Percentage</th>
+            </tr>
+            </thead>
+        <tbody>
+        {% for item in percentages %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.total }}</td> 
+                <td>{{ item.percentage }} %</td>      
+                </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+
+    {{ pie | safe }}
+
+    {% comment %} <id = "analytics-play">
+     <h1>Top 10 Games with the Highest Playtime</h1>
+    
+    {{ play_div | safe }} {% endcomment %}
+
+{% comment %} <body id="homepage">
+    <div class="container">
+        <section id="slide-1" class="scrollsnap-section"> 
+            <h1 class="animate__animated animate__fadeInDown" id="welcome">View Your Analytics.</h1>
+             <li class="btn btn-light nav-item dropdown" > <span>
+                <a class="nav-link dropdown-toggle" href="{% url 'analytics' %}" id="homepage-drop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Analytics
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdown-choices">
+                    <li><a class="btn btn-light dropdown-item scroll_down_button" href="{% url 'analytics' %}#playtime">Highest Playtime</a></li>
+                    <li><a class="dropdown-item" href="{% url 'analytics' %}#highest-rating">Highest Rated</a></li>
+                    <li><a class="dropdown-item" href="{% url 'analytics' %}#lowest-rating">Lowest Rated</a></li>
+                    <li><a class="dropdown-item" href="{% url 'analytics' %}#popular-genre">Popular Genres</a></li>
+                    <li><a class="dropdown-item" href="{% url 'analytics' %}#dev-breakdown">Developer Breakdown</a></li>
+                </ul> </span>
+            </li>
+        </section>
+        <section id="popular-genre" class="scrollsnap-section"> 
+            <h1 id= "select">Top 15 Game Genres</h1>        
+                <class= "plotly-graph-div">
+                {{ genre_bar }}
+                 </ul> </span>
+            </li>
+        </section>
+    </section>
+    
+    <section id="playtime" class="scrollsnap-section"> 
+        <h1 id= "select">Top 10 Games with the Highest Playtime</h1>
+         {% autoescape off %}
+        {{ plot_div }}
+        {% endautoescape %}  </ul> </span>
+        </li>
+    </section>
+    
+    <section id="highest-rating" class="scrollsnap-section"> 
+        <h1 id= "select"><h1>Top 10 Games with the Highest Rating</h1>
+        <table class ="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Game Title</th>
+                    <th>Number of Positive Ratings</th>
+                </tr>
+                </thead>
+            <tbody>
+            {% for i in goodRatings %}
+                <tr>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.pos_rate }}</td>      
+                    </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+             </ul> </span>
+        </li>
+    </section>
+
+    <section id="lowest-rating" class="scrollsnap-section"> 
+        <h1 id= "select"><h1>Top 10 Games with the Lowest Rating</h1>
+            <table class ="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Game Title</th>
+                        <th>Number of Negative Ratings</th>
+                    </tr>
+                    </thead>
+                <tbody>
+                {% for o in badRatings %}
+                    <tr>
+                        <td>{{ o.title }}</td>
+                        <td>{{ o.neg_rate }}</td>      
+                        </tr>
+                {%endfor%}
+                </tbody>
+            </table>
+             </ul> </span>
+        </li>
+    </section> 
+ <h1>
+    Developer Breakdown
+</h1>
+<h5> Top 15 Developers 
+</h5> 
+<br>
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Developer</th>
+            <th>Total Games</th>
+            <th>Percentage</th>
+        </tr>
+        </thead>
+    <tbody>
+    {% for item in percentages %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.total_games }}</td> 
+            <td>{{ item.percentage }} %</td>      
+            </tr>
+    {%endfor%}
+    </tbody>
+</table> {% endcomment %}
+
+</center>
+{% endblock %}
