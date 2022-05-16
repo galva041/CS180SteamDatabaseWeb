@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 import copy
 import operator
+import chart_studio.tools as tls
 
 from Games.models import Games
 from .game import Game
@@ -22,13 +23,37 @@ from .forms import GameForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import GameForm
 
+def platform_pie(request):
+    for i, p in enumerate(platforms):
+        p.percentage = (p.total / len(game_list)) * 100
+
+    platforms_s = sorted(platforms, key=lambda Platform: int(Platform.total), reverse=True)
+
+    name = [o.name for o in platforms_s]
+    count = [o.total for o in platforms_s]
+
+    pie_div = plot([Bar(x=name, y=count)], output_type= 'div')
+
+    return render(request, 'home/analytics.html', context={'percentages': platforms_s, 'pie': pie_div})
+
 def dev_pie(request):
     for i, d in enumerate(dev_names):
         d.percentage = (d.total_games / len(game_list)) * 100
 
     dev_names_s = sorted(dev_names, key=lambda Developer: int(Developer.total_games), reverse=True)
+    dev_names_s = dev_names_s[:15]
 
-    return render(request, 'home/displayDevs.html', context={'percentages': dev_names_s[:15]})
+    name = [o.name for o in dev_names_s]
+    count = [o.total_games for o in dev_names_s]
+
+    fig = go.Figure(data=[go.Pie(labels=name, values=count)])
+    fig.update_layout(
+        width= 800, height= 800,
+    )
+
+    plot_div = plot(fig, output_type='div')
+
+    return render(request, 'home/DisplayDevs.html', context={'percentages': dev_names_s, 'pie_dev': plot_div})
 
 def delete_game(request, game_id):
     for i, o in enumerate(game_list):
