@@ -1,0 +1,27 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+<!-- {% autoescape off %}
+{{ plot_div }}
+{% endautoescape %} -->
+
+<center><h1>Top 100 Games Average Rating</h1></center>
+<table class ="table table-bordered">
+    <thead>
+        <tr>
+            <th>Game Title</th>
+            <th>Percentage of Positive Ratings</th>
+        </tr>
+        </thead>
+    <tbody>
+    {% for item in avg_rating %}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.avg }}</td>      
+            </tr>
+    {%endfor%}
+    </tbody>
+</table>
+
+{% endblock %}
