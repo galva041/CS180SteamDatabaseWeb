@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 import copy
 import operator
-import chart_studio.tools as tls
 
 from Games.models import Games
 from .game import Game
