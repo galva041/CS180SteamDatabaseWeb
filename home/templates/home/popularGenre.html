@@ -2,14 +2,9 @@
 
 {% block content %}
 
-<center><h1>Top 15 Game Genres</h1>
-{% autoescape off %}
-{{ genre_bar }}
-{% endautoescape %}
-</center>
-<!-- <center>
-    <h1>Most Popular Genres</h1> 
-</center>
+<center>
+    <h1>Top 15 Game Genres</h1>
+
     <table class ="table table-bordered">
         <thead>
             <tr>
@@ -18,13 +13,17 @@
             </tr>
             </thead>
         <tbody>
-        {% for item in sorted_genreList %}
+        {% for item in genres %}
             <tr>
                 <td>{{ item.name }}</td>
                 <td>{{ item.count }}</td>      
                 </tr>
         {%endfor%}
         </tbody>
-    </table> -->
+    </table> 
+
+{% autoescape off %}
+{{ genre_bar }}
+{% endautoescape %}
 </center>
 {% endblock %}
