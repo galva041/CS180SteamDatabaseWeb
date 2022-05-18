@@ -32,7 +32,6 @@ with open('steam.csv', 'r' , encoding = 'utf-8') as f:
             if (found == 0):                            # if genre not in list, append it
                 dev_names.append(Developer(n, 1))
 
-
         currGamePlatforms = row[6]
         game_platform_list = currGamePlatforms.split(';')
         for i, n in enumerate(game_platform_list):
@@ -46,8 +45,7 @@ with open('steam.csv', 'r' , encoding = 'utf-8') as f:
                 platforms.append(Platform(n, 1))
 
         temp_genres=row[9]
-        temp_genre_list = temp_genres.split(';')
-        flag=0                                      
+        temp_genre_list = temp_genres.split(';')                                     
         for i, o in enumerate(temp_genre_list):     # goes through list of genres in current game
             flag=0
             for j, p in enumerate(genre_list):      # goes through list of genre classes in genre list
@@ -56,7 +54,6 @@ with open('steam.csv', 'r' , encoding = 'utf-8') as f:
                     p.count = p.count + 1
                     break
             if(flag==0):                            # if genre not in list, append it
-                temp_genre=Genre(o, 1)
-                genre_list.append(temp_genre)
+                genre_list.append(Genre(o, 1))
 
 
