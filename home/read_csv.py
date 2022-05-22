@@ -18,19 +18,19 @@ with open('steam.csv', 'r' , encoding = 'utf-8') as f:
             row[12], row[13], row[14], row[15], row[16], row[17]))
 
 
-        temp_devnames = row[4]
-        temp_dev_list = temp_devnames.split(';')
+        # temp_devnames = row[4]
+        # temp_dev_list = temp_devnames.split(';')
         
-        found = 0                                      
-        for i, n in enumerate(temp_dev_list):     # goes through list of developers in current game
-            found = 0
-            for j, d in enumerate(dev_names):      # goes through list of genre classes in genre list
-                if (n == d.name):
-                    found = 1                          # raise flag when genre already in list
-                    d.total_games = d.total_games + 1
-                    break
-            if (found == 0):                            # if genre not in list, append it
-                dev_names.append(Developer(n, 1))
+        # found = 0                                      
+        # for i, n in enumerate(temp_dev_list):     # goes through list of developers in current game
+        #     found = 0
+        #     for j, d in enumerate(dev_names):      # goes through list of genre classes in genre list
+        #         if (n == d.name):
+        #             found = 1                          # raise flag when genre already in list
+        #             d.total_games = d.total_games + 1
+        #             break
+        #     if (found == 0):                            # if genre not in list, append it
+        #         dev_names.append(Developer(n, 1))
 
         currGamePlatforms = row[6]
         game_platform_list = currGamePlatforms.split(';')

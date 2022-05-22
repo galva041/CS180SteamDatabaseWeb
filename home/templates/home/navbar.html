@@ -35,6 +35,10 @@
                   <li><a class="dropdown-item" href="{% url 'analytics' %}#dev-breakdown">Developer Breakdown</a></li>
                 </ul> {% endcomment %}
               </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'wishlist' %}">Wish List</a>
+              </li>
+
               </li>
             </ul>
             <form class="d-flex" method=POST action="{% url 'search-games' %}" autocomplete="off">
