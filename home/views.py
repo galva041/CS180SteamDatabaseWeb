@@ -59,7 +59,6 @@ def dev_pie(request):
 def delete_game(request, game_id):
     for i, o in enumerate(game_list):
         if int(o.gameid) == int(game_id):
-            # del game_list[i]
             game_list[i].deleted = 1
             break
     return redirect('all-games')
