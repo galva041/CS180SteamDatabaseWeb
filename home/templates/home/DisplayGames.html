@@ -45,7 +45,7 @@
                     <td>Free</td>
                   {% endif %}
                   <td>
-                    <a href="{% url 'restore-game' item.gameid %}" class="btn btn-secondary">Restore</a>
+                    <a href="{% url 'update-game' item.gameid %}" class="btn btn-secondary">Update</a>
                     <a href="{% url 'delete_game' item.gameid %}" class="btn btn-danger">Delete</a>
                     <a href="{% url 'wishlist-game' item.gameid %}" class="btn btn-secondary">Add To Wish List</a>
                   </td>
