@@ -22,6 +22,10 @@ urlpatterns = [
     path('recycle_bin/', views.recycle_bin, name = 'recycle-bin'),
     path('delete_game_perm/<game_id>', views.delete_game_perm, name='delete-game-perm'),
     path('restore_game/<game_id>', views.restore_game, name='restore-game'),
+    path('add_wishlist/<game_id>', views.add_wishlist, name = 'wishlist-game'),
+    path('wishlist/', views.wishlist, name = 'wishlist'),
+    path('delete_wishlist/<game_id>', views.delete_wishlist, name = 'delete-wishlist'),
+
     # path('analytics/', views.most_playtime, name='analytics'),
     # path('analytics/', views.highest_rating, name='analytics'),
     # path('analytics/', views.lowest_rating, name='analytics'),

@@ -22,6 +22,8 @@ from .forms import GameForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import GameForm
 
+displayWishlist = []
+
 def platform_pie(request):
     for i, p in enumerate(platforms):
         p.percentage = (p.total / len(game_list)) * 100
@@ -98,11 +100,24 @@ def add_games(request):
     if request.method == "POST":
         form = GameForm(request.POST)
         if form.is_valid():
-            newGame = Game(0, form.cleaned_data.get("title"), 0, 1, form.cleaned_data.get("dev"), form.cleaned_data.get("publisher"), '', '', '', '', '', 0, 0, 0, 0, 0, '', form.cleaned_data.get("price"))
+            newGame = Game(0, form.cleaned_data.get("title"), 0, 1, form.cleaned_data.get("dev"), 
+                        form.cleaned_data.get("publisher"), '', '', '', form.cleaned_data.get("genre"), 
+                        '', 0, 0, 0, 0, 0, '', form.cleaned_data.get("price"))
             newID = int(game_list[-1].gameid)
             newID = newID + 1
             newGame.set_gameid(newID)
             game_list.append(newGame)
+
+            for i, d in enumerate(dev_names):
+                if newGame.dev == d.name:
+                    d.total_games = d.total_games + 1
+                    break
+
+            for i, d in enumerate(genre_list):
+                if newGame.genre == d.name:
+                    d.count = d.count + 1
+                    break
+
             return HttpResponseRedirect('/addGames?submitted=True')
     else:
         form = GameForm
@@ -213,8 +228,25 @@ def popular_genre(request):
     
     #plot([Pie(labels = name, values = count)], width = 2 ,output_type= 'div')
     
+    return render(request, 'home/popularGenre.html', context ={'genres':sorted_genreList, 'genre_bar' :  plot_div})
 
-    return render(request, 'home/popularGenre.html', context ={ 'genre_bar' :  plot_div})
+def add_wishlist(request, game_id):
+    for i, o in enumerate(game_list):
+        if int(o.gameid) == int(game_id):
+            displayWishlist.append(o)
+            break
+
+    return all_games(request)     
+
+def wishlist (request):
+    return render(request, 'home/wishlist.html', context = {'games': displayWishlist}) 
+
+def delete_wishlist(request, game_id):
+    for i, o in enumerate(displayWishlist):
+        if int(o.gameid) == int(game_id):
+            del displayWishlist[i]
+            break
+    return render(request, 'home/wishlist.html', context = {'games': displayWishlist}) 
 
 def recycle_bin(request):
     games = game_list
