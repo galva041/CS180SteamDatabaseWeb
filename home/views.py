@@ -59,7 +59,8 @@ def dev_pie(request):
 def delete_game(request, game_id):
     for i, o in enumerate(game_list):
         if int(o.gameid) == int(game_id):
-            del game_list[i]
+            # del game_list[i]
+            game_list[i].deleted = 1
             break
     return redirect('all-games')
 
@@ -247,4 +248,20 @@ def delete_wishlist(request, game_id):
             break
     return render(request, 'home/wishlist.html', context = {'games': displayWishlist}) 
 
+def recycle_bin(request):
+    games = game_list
+    return render(request, 'home/recycle_bin.html', context={'games' : games })
 
+def delete_game_perm(request, game_id):
+    for i, o in enumerate(game_list):
+        if int(o.gameid) == int(game_id):
+            del game_list[i]
+            break
+    return redirect('recycle-bin')
+
+def restore_game(request, game_id):
+    for i, o in enumerate(game_list):
+        if int(o.gameid) == int(game_id):
+            game_list[i].deleted = 0
+            break
+    return redirect('recycle-bin')
