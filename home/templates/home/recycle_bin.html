@@ -1,0 +1,42 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+<center>
+
+    <h1>Recycle Bin</h1>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Developer</th>
+            <th>Publisher</th>
+            <th>Price</th>
+            <th>👷‍♀️</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in games %}
+            <tr>
+              {% if item.deleted == 1 %}
+                <td>{{ item.title }}</td>
+                <td>{{ item.dev }}</td>
+                <td>{{item.publisher}}</td>
+                {% if item.price != "0.0" %}
+                  <td>${{ item.price }}</td>
+                {% else %}
+                  <td>Free</td>
+                {% endif %}
+                <td> <!-- Button trigger modal -->
+                  <a href="{% url 'restore-game' item.gameid %}" class="btn btn-secondary">Restore</a>
+                  <a href="{% url 'delete-game-perm' item.gameid %}" class="btn btn-danger">Delete Permanently</a>
+                </tr>
+              {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+
+</center>
+
+{% endblock %}

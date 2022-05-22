@@ -17,6 +17,7 @@ class Game():
     median_playtime = 0
     owners = ""
     price = 0
+    deleted = 0
 
     def __init__(self, gameid, title, rel_date, english, dev, publisher, platform, rec_age, categories, genre, steamspy_tags, achievements, pos_rate, neg_rate, 
     avg_playtime, median_playtime, owners, price):
@@ -38,6 +39,7 @@ class Game():
         self.median_playtime = median_playtime
         self.owners = owners
         self.price = price
+        self.deleted = 0
 
     def set_gameid(self, id):
         self.gameid = id
