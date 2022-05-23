@@ -22,6 +22,8 @@ from .forms import GameForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import GameForm
 
+#displayWishlist = []
+
 def platform_pie(request):
     for i, p in enumerate(platforms):
         p.percentage = (p.total / len(game_list)) * 100
@@ -57,7 +59,7 @@ def dev_pie(request):
 def delete_game(request, game_id):
     for i, o in enumerate(game_list):
         if int(o.gameid) == int(game_id):
-            del game_list[i]
+            game_list[i].deleted = 1
             break
     return redirect('all-games')
 
@@ -226,3 +228,41 @@ def popular_genre(request):
     #plot([Pie(labels = name, values = count)], width = 2 ,output_type= 'div')
     
     return render(request, 'home/popularGenre.html', context ={'genres':sorted_genreList, 'genre_bar' :  plot_div})
+
+def add_wishlist(request, game_id):
+    for i, o in enumerate(game_list):
+        if int(o.gameid) == int(game_id):
+            #displayWishlist.append(o)
+            game_list[i].wishlisted = 1
+            break
+
+    return all_games(request)     
+
+def wishlist (request):
+    return render(request, 'home/wishlist.html', context = {'games': game_list}) 
+
+def delete_wishlist(request, game_id):
+    for i, o in enumerate(game_list):
+        if int(o.gameid) == int(game_id):
+            #del displayWishlist[i]
+            game_list[i].wishlisted = 0
+            break
+    #return render(request, 'home/wishlist.html', context = {'games': game_list}) 
+    return redirect('wishlist')
+
+def recycle_bin(request):
+    return render(request, 'home/recycle_bin.html', context={'games' : game_list })
+
+def delete_game_perm(request, game_id):
+    for i, o in enumerate(game_list):
+        if int(o.gameid) == int(game_id):
+            del game_list[i]
+            break
+    return redirect('recycle-bin')
+
+def restore_game(request, game_id):
+    for i, o in enumerate(game_list):
+        if int(o.gameid) == int(game_id):
+            game_list[i].deleted = 0
+            break
+    return redirect('recycle-bin')

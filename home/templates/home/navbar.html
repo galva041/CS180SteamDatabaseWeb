@@ -12,6 +12,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'add-games' %}">Insert Game</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'recycle-bin' %}">Recycle Bin</a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Analytics
@@ -35,6 +38,10 @@
                   <li><a class="dropdown-item" href="{% url 'analytics' %}#dev-breakdown">Developer Breakdown</a></li>
                 </ul> {% endcomment %}
               </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'wishlist' %}">Wish List</a>
+              </li>
+
               </li>
             </ul>
             <form class="d-flex" method=POST action="{% url 'search-games' %}" autocomplete="off">

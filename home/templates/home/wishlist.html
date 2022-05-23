@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+<center>
+    <h1>My Wishlist</h1>
+</center>
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Developer</th>
+        <th>Publisher</th>
+        <th>Price</th>
+        <th>👷‍♀️</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in games %}
+        <tr>
+          {% if item.wishlisted == 1 %}
+            <td>{{ item.title }}</td>
+            <td>{{ item.dev }}</td>
+            <td>{{item.publisher}}</td>
+            {% if item.price != "0.0" %}
+              <td>${{ item.price }}</td>
+            {% else %}
+              <td>Free</td>
+            {% endif %}
+            <td> <!-- Button trigger modal -->
+              <a href="{% url 'update-game' item.gameid %}" class="btn btn-secondary">Update</a>
+              <a href="{% url 'delete-wishlist' item.gameid %}" class="btn btn-danger">Remove from Wishlist</a>
+        </td>
+        {% endif %}
+      {% endfor%}
+    </tbody>
+</table>
+
+{% endblock %}
+
