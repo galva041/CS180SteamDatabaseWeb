@@ -2,21 +2,21 @@
 #welcome {
     text-align: center;
     font-size: 5vw;
-    padding: 100px 100px 50px 100px;
+    padding: 70px 100px 50px 100px;
     /* position: fixed */
 }
 
 
 #homepage {
     overflow-y: hidden;
-    background-image: url("mtns.jpg");
+    background-image: url("pink_mtns.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
 #analytics {
   overflow-y: hidden;
-  background-image: url("mtn2.jpg");
+  background-image: url("pink_mtns.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
 }
