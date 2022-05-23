@@ -18,6 +18,7 @@ class Game():
     owners = ""
     price = 0
     deleted = 0
+    wishlisted = 0
 
     def __init__(self, gameid, title, rel_date, english, dev, publisher, platform, rec_age, categories, genre, steamspy_tags, achievements, pos_rate, neg_rate, 
     avg_playtime, median_playtime, owners, price):
@@ -40,6 +41,7 @@ class Game():
         self.owners = owners
         self.price = price
         self.deleted = 0
+        self.wishlisted = 0
 
     def set_gameid(self, id):
         self.gameid = id

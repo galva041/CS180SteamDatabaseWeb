@@ -47,7 +47,11 @@
                   <td>
                     <a href="{% url 'update-game' item.gameid %}" class="btn btn-secondary">Update</a>
                     <a href="{% url 'delete_game' item.gameid %}" class="btn btn-danger">Delete</a>
-                    <a href="{% url 'wishlist-game' item.gameid %}" class="btn btn-secondary">Add To Wish List</a>
+                    {% if item.wishlisted == 0 %}
+                      <a href="{% url 'wishlist-game' item.gameid %}" class="btn btn-secondary">Add To Wish List</a>
+                    {% else %}
+                      <a href="" class="btn btn-secondary">In Wish List</a>
+                    {% endif %}
                   </td>
                 {% endif %}
               {% endfor %}
