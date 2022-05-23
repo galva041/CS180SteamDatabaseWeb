@@ -1,12 +1,15 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-
+<body id = "homepage">
 <center>
     <h1>My Wishlist</h1>
 </center>
 <table class="table table-bordered table-striped">
     <thead>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        </style>
       <tr>
         <th>Title</th>
         <th>Developer</th>
@@ -35,6 +38,6 @@
       {% endfor%}
     </tbody>
 </table>
-
+</body>
 {% endblock %}
 

@@ -5,10 +5,13 @@
 <!-- {% autoescape off %}
 {{ plot_div }}
 {% endautoescape %} -->
-
+<body id="analytics">
 <center><h1>Top 10 Games with the Highest Rating</h1></center>
 <table class ="table table-bordered">
     <thead>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+            </style>
         <tr>
             <th>Game Title</th>
             <th>Number of Positive Ratings</th>
@@ -23,5 +26,5 @@
     {%endfor%}
     </tbody>
 </table>
-
+</body>
 {% endblock %}

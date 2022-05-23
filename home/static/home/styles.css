@@ -12,6 +12,7 @@
     background-image: url("mtns.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
+    font-family: 'Fredoka One', cursive;
 }
 
 #analytics {
@@ -19,6 +20,7 @@
   background-image: url("mtn2.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
+  font-family: 'Fredoka One', cursive;
 }
 
 #select {

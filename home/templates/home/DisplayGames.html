@@ -1,8 +1,11 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-
+<body id = "homepage">
 <center>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+    </style>
     {% if searched %}
       <h1>Search Results for "{{ searched }}"</h1>
       <br/>
@@ -81,5 +84,5 @@
 
 
 </center>
-
+</body>
 {% endblock %}

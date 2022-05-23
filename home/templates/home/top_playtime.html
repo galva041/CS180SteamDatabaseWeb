@@ -1,8 +1,11 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-
+<body id="analytics">
 <center>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        </style>
     <h1>Top 10 Games with the Highest Playtime</h1>
     {% autoescape off %}
     {{ plot_div }}
@@ -26,5 +29,5 @@
     {%endfor%}
     </tbody>
 </table> -->
-
+</body>
 {% endblock %}

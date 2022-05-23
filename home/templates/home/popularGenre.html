@@ -1,12 +1,15 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-
+<body id="analytics">
 <center>
     <h1>Top 15 Game Genres</h1>
 
     <table class ="table table-bordered">
         <thead>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+                </style>
             <tr>
                 <th>Genre Name</th>
                 <th>Number of Times Used</th>
@@ -26,4 +29,5 @@
 {{ genre_bar }}
 {% endautoescape %}
 </center>
+</body>
 {% endblock %}

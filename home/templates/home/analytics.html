@@ -1,6 +1,7 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
+<body id = "analytics">
 <center>
     <id = "analytics-plat">
     <h1>
@@ -9,6 +10,9 @@
     <br>
     <table class="table table-striped table-bordered">
         <thead class="thead-dark">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+                </style>
             <tr>
                 <th>Platform</th>
                 <th>Total Games</th>
@@ -136,4 +140,5 @@
 </table> {% endcomment %}
 
 </center>
+</body>
 {% endblock %}

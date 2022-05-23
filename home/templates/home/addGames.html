@@ -1,8 +1,11 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-
+<body id = "homepage">
 <center>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        </style>
     <h1>Add a Game</h1>
     <p>Please input game information below.</p>
     {% if submitted %}
@@ -20,5 +23,5 @@
 
     {% endif %}
 </center>
-
+</body>
 {% endblock %}
