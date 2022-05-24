@@ -1,85 +1,100 @@
-{% extends 'home/base.html' %}
-
-{% block content %}
+{% extends 'home/base.html' %} {% block content %}
 
 <center>
-    {% if searched %}
-      <h1>Search Results for "{{ searched }}"</h1>
-      <br/>
-    {% else %}
-    <div class="title-dropdown">
-        <h1>All Games
-            <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                Sort By
-              </a>
-            
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-        </h1>
-    </div>
-    
-    {% endif %}
-        <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Developer</th>
-                <th>Publisher</th>
-                <th>Price</th>
-                <th>👷‍♀️</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for item in games %}
-              <tr>
-                {% if item.deleted == 0 %}
-                  <td>{{ item.title }}</td>
-                  <td>{{ item.dev }}</td>
-                  <td>{{item.publisher}}</td>
-                  {% if item.price != "0.0" %}
-                    <td>${{ item.price }}</td>
-                  {% else %}
-                    <td>Free</td>
-                  {% endif %}
-                  <td>
-                    <a href="{% url 'update-game' item.gameid %}" class="btn btn-secondary">Update</a>
-                    <a href="{% url 'delete_game' item.gameid %}" class="btn btn-danger">Delete</a>
-                    {% if item.wishlisted == 0 %}
-                      <a href="{% url 'wishlist-game' item.gameid %}" class="btn btn-secondary">Add To Wish List</a>
-                    {% else %}
-                      <a href="" class="btn btn-secondary">In Wish List</a>
-                    {% endif %}
-                  </td>
-                {% endif %}
-              {% endfor %}
-          </tbody>
-        </table>
+  {% if searched %}
+  <h1>Search Results for "{{ searched }}"</h1>
+  <br />
+  {% else %}
+  <div class="title-dropdown">
+    <h1>
+      All Games
+      <a
+        class="btn btn-secondary btn-sm dropdown-toggle"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Sort By
+      </a>
 
-    {% if games.has_other_pages %}
-      <div class="prev_next">
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </h1>
+  </div>
 
-        {% if games.has_previous %}
-          <a class="prev btn btn-info" href="?page={{games.previous_page_number}}">Prev</a>
-        {% endif %}
-        {% for i in games.paginator.page_range %}
-          {% if games.number == i %}
-              {{ i }} / {{ games.paginator.num_pages }}
-          {% endif %}
-        {% endfor %}
-        {% if games.has_next %}
-          <a class="next btn btn-info" href="?page={{games.next_page_number}}">Next</a>
-        {% endif %}
-        <span class="clear_both"></span>
-    
-      </div> 
   {% endif %}
-  <br>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Developer</th>
+        <th>Publisher</th>
+        <th>Price</th>
+        <th>👷‍♀️</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in games %}
+      <tr>
+        {% if item.deleted == 0 %}
+        <td>{{ item.title }}</td>
+        <td>{{ item.dev }}</td>
+        <td>{{item.publisher}}</td>
+        {% if item.price != "0.0" %}
+        <td>${{ item.price }}</td>
+        {% else %}
+        <td>Free</td>
+        {% endif %}
+        <td>
+          <a
+            href="{% url 'update-game' item.gameid %}"
+            class="btn btn-secondary"
+            >Update</a
+          >
+          <a href="{% url 'delete_game' item.gameid %}" class="btn btn-danger"
+            >Delete</a
+          >
+          {% if item.wishlisted == 0 %}
+          <a
+            href="{% url 'wishlist-game' item.gameid %}"
+            class="btn btn-secondary"
+            >Add To Wish List</a
+          >
+          {% else %}
+          <a href="" class="btn btn-secondary">In Wish List</a>
+          {% endif %}
+        </td>
+        {% endif %} {% endfor %}
+      </tr>
+    </tbody>
+  </table>
 
-
-
+  {% if games.has_other_pages %}
+  <div class="prev_next">
+    {% if games.has_previous %}
+    <a class="prev btn btn-info" href="?page={{games.previous_page_number}}"
+      >Prev</a
+    >
+    {% endif %}
+    {% for i in games.paginator.page_range %} 
+      {% if games.number == i %} 
+        {{ i }} / {{ games.paginator.num_pages }} 
+      {% endif %} 
+    {% endfor %} 
+    {% if games.has_next %}
+    <a class="next btn btn-info" href="?page={{games.next_page_number}}"
+      >Next</a
+    >
+    {% endif %}
+    <span class="clear_both"></span>
+  </div>
+  {% endif %}
+  <br />
 </center>
 
 {% endblock %}
